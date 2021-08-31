@@ -1,0 +1,7 @@
+com\example\server\student\StudentRepository.class
+com\example\server\student\StudentConfig$1.class
+com\example\server\student\StudentController.class
+com\example\server\student\StudentService.class
+com\example\server\student\Student.class
+com\example\server\student\StudentConfig.class
+com\example\server\ServerApplication.class
