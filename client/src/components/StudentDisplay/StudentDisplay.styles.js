@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
   width: 100%;
 
   margin: 0 2vh;
+
+  max-height: 89vh;
+  overflow-y: scroll;
 `;
 
 export const Title = styled.h1`
