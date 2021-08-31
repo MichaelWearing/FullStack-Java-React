@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background: cyan;
+  background: rgb(240, 242, 245);
 `;
 
 export const Title = styled.h1`
-  background: violet;
-
   text-align: center;
-  padding: 5px 0px;
+
   font-size: 50px;
+
+  padding: 5px 0px;
+  margin-bottom: 2vh;
 `;
-
-

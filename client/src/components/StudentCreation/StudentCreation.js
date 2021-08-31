@@ -25,11 +25,11 @@ export default function StudentCreation({ students, setStudents }) {
         dob: dob,
       })
       .then((response) => {
-        console.log(response);
+        axios.get("http://localhost:8080/api/v1/student").then((response) => {
+          setStudents(response.data);
+        });
       });
-    axios.get("http://localhost:8080/api/v1/student").then((response) => {
-      setStudents(response.data);
-    });
+
     console.log(name, email, dob);
   };
 

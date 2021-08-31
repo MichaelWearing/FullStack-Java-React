@@ -6,7 +6,7 @@ import { Wrapper, Title } from "./Header.styles";
 export default function Header() {
     return (
         <Wrapper>
-            <Title>Header</Title>
+            <Title>Student App</Title>
         </Wrapper>
     )
 }
