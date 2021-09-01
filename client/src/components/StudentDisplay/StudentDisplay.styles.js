@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 
   margin: 0 2vh;
 
-  max-height: 89vh;
+  min-height: 89vh;
   overflow-y: scroll;
 `;
 
