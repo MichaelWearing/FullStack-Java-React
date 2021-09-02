@@ -14,7 +14,7 @@ export default function StudentDisplay({ students, setStudents }) {
     axios.get("http://localhost:8080/api/v1/student").then((response) => {
       setStudents(response.data);
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const printStudents = () => {

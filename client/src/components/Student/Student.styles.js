@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background: rgb(240, 242, 245);
+  background: white;
   border-radius: 5px;
 
   width: 75%;
@@ -19,10 +19,11 @@ export const InfoWrapper = styled.div`
 `;
 
 export const InfoTitle = styled.p`
-  font-size: 18px;
+  font-size: 16px;
+  color: slategray;
 `;
 
 export const InfoValue = styled.p`
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 16px;
+
 `;

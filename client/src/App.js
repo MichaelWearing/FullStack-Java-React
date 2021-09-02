@@ -5,7 +5,7 @@ import StudentContent from "./components/StudentContent/StudentContent"
 function App() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <StudentContent />
     </>
   );
