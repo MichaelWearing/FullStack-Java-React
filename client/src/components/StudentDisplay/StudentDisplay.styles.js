@@ -34,3 +34,4 @@ export const StudentList = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+

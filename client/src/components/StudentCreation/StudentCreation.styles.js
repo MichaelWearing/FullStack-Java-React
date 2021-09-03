@@ -45,4 +45,14 @@ export const SubmitButton = styled.button`
 
   height: 4vh;
   width: 13vh;
+
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &:hover,
+  &:focus {
+    transform: translateY(-2px);
+    color: black;
+    background: lightslategray;
+  }
 `;

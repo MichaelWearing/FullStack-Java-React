@@ -25,5 +25,22 @@ export const InfoTitle = styled.p`
 
 export const InfoValue = styled.p`
   font-size: 16px;
+`;
 
+export const IconWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+export const Icons = styled.div`
+  color: slategray;
+
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &:hover,
+  &:focus {
+    transform: translateY(-2px);
+    color: black;
+  }
 `;

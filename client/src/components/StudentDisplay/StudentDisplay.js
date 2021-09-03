@@ -7,7 +7,12 @@ import Student from "../Student/Student";
 // Styled Components
 import { Wrapper, Title, StudentList } from "./StudentDisplay.styles";
 
-export default function StudentDisplay({ students, setStudents }) {
+export default function StudentDisplay({
+  students,
+  setStudents,
+  showEditForm,
+  setShowEditForm,
+}) {
   /* const [students, setStudents] = useState([]); */
 
   useEffect(() => {
@@ -27,6 +32,9 @@ export default function StudentDisplay({ students, setStudents }) {
           email={student.email}
           dob={student.dob}
           age={student.age}
+          setStudents={setStudents}
+          showEditForm={showEditForm}
+          setShowEditForm={setShowEditForm}
         />
       );
     });
