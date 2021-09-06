@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-client
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: student-client
+  template:
+    metadata:
+      labels:
+        app: student-client
+    spec:
+      containers:
+        - name: student-client
+          image: mikeywearing/student-client
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
