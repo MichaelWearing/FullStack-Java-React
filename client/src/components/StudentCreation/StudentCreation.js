@@ -31,6 +31,9 @@ export default function StudentCreation({ students, setStudents }) {
       });
 
     console.log(name, email, dob);
+    setName("")
+    setEmail("")
+    setDob("")
   };
 
   return (
