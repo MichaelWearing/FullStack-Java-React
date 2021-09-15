@@ -24,21 +24,24 @@ public class Student {
     private LocalDate dob;
     @Transient
     private Integer age;
+    private Long teacherId;
 
     public Student() {
     }
 
-    public Student(Long id, String name, String email, LocalDate dob) {
+    public Student(Long id, String name, String email, LocalDate dob, Long teacherId) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.dob = dob;
+        this.teacherId = teacherId;
     }
 
-    public Student(String name, String email, LocalDate dob) {
+    public Student(String name, String email, LocalDate dob, Long teacherId) {
         this.name = name;
         this.email = email;
         this.dob = dob;
+        this.teacherId = teacherId;
     }
 
     public Long getId() {
@@ -81,6 +84,14 @@ public class Student {
         this.age = age;
     }
 
+    public Long getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Long teacherId) {
+        this.teacherId = teacherId;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -89,6 +100,7 @@ public class Student {
                 ", email='" + email + '\'' +
                 ", dob=" + dob +
                 ", age=" + age +
+                ", teacherId=" + teacherId +
                 '}';
     }
 }

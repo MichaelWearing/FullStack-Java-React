@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,9 +19,23 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public List<Student> getStudents() {
-        return studentRepository.findAll();
+    public List<Student> getStudents(Student student) {
+       ArrayList<Student> studentsToReturn = new ArrayList<>();
+        List<Student> allStudents = studentRepository.findAll();
+
+        for (Student s : allStudents) {
+            if (s.getTeacherId() == student.getTeacherId()) {
+                studentsToReturn.add(s);
+            }
+        }
+
+        System.out.println("Trying to get students with the teacher with ID: " + student.getTeacherId());
+        return studentsToReturn;
     }
+//
+//    public List<Student> getStudents(Student student) {
+//        return studentRepository.findAll();
+//    }
 
     public void addNewStudent(Student student) {
         Optional<Student> StudentOptional = studentRepository.findStudentByEmail(student.getEmail());
