@@ -8,9 +8,15 @@ import {
   InputWrapper,
   Input,
   SubmitButton,
+  LogOutButton,
 } from "./StudentCreation.styles";
 
-export default function StudentCreation({ students, setStudents }) {
+export default function StudentCreation({
+  students,
+  setStudents,
+  setTeacherId,
+  setLoggedIn,
+}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [dob, setDob] = useState("");
@@ -31,9 +37,14 @@ export default function StudentCreation({ students, setStudents }) {
       });
 
     console.log(name, email, dob);
-    setName("")
-    setEmail("")
-    setDob("")
+    setName("");
+    setEmail("");
+    setDob("");
+  };
+
+  const logOutTeacher = () => {
+    setTeacherId("");
+    setLoggedIn(false);
   };
 
   return (
@@ -57,6 +68,7 @@ export default function StudentCreation({ students, setStudents }) {
           onChange={(e) => setDob(e.currentTarget.value)}
         />
         <SubmitButton type="submit">Submit</SubmitButton>
+        <LogOutButton onClick={logOutTeacher}>Log Out</LogOutButton>
       </InputWrapper>
     </Wrapper>
   );

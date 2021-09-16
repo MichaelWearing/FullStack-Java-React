@@ -11,7 +11,6 @@ public class TeacherController {
 
     private final TeacherService teacherService;
 
-
     @Autowired
     public TeacherController(TeacherService teacherService) {
         this.teacherService = teacherService;
@@ -25,5 +24,10 @@ public class TeacherController {
     @PostMapping
     public void createNewTeacher(@RequestBody Teacher teacher) {
         teacherService.addNewTeacher(teacher);
+    }
+
+    @PostMapping(path = "/login")
+    public Object authenticateTeacher(@RequestBody Teacher teacher) {
+       return teacherService.authenticateTeacher(teacher);
     }
 }

@@ -1,29 +1,30 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background: royalblue;
-  border: 1px solid black;
+  background: lightsteelblue;
 
-  width: 75%;
-  height: 99.8vh;
+  height: 100vh;
 `;
 
 export const Title = styled.h1`
-  font-size: 36px;
+  font-size: 8vh;
   text-align: center;
-  margin: 7vh 0;
+
+  padding-top: 18vh;
 `;
 
 export const InputWrapper = styled.form`
   display: flex;
   flex-direction: column;
+
+  align-items: center;
 `;
 
 export const Input = styled.input`
   font-size: 16px;
 
-  width: 45%;
-  height: 3vh;
+  width: 35%;
+  height: 4vh;
 
   border: 0;
   border-radius: 6px;
@@ -46,6 +47,8 @@ export const SubmitButton = styled.button`
   height: 4vh;
   width: 13vh;
 
+  margin-bottom: 2vh;
+
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
@@ -57,27 +60,13 @@ export const SubmitButton = styled.button`
   }
 `;
 
-export const LogOutButton = styled.button`
-  align-self: center;
-
-  border: 1px solid #bebec0;
-  border-radius: 6px;
-  background-color: #d8d8d9;
-  font-size: 14px;
-
-  height: 4vh;
-  width: 13vh;
-
-  margin-bottom: 2vh;
-  margin-top: 40vh;
+export const CreateNewUser = styled.a`
+  color: mediumblue;
 
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
   &:hover,
   &:focus {
-    transform: translateY(-2px);
-    color: black;
-    background: lightslategray;
+    text-decoration: underline;
   }
 `;

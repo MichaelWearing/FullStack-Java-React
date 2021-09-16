@@ -12,13 +12,20 @@ export default function StudentDisplay({
   setStudents,
   showEditForm,
   setShowEditForm,
+  teacherId,
 }) {
   /* const [students, setStudents] = useState([]); */
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/v1/student").then((response) => {
-      setStudents(response.data);
-    });
+    //console.log("Setting teacher Id = ", teacherId, " ....");
+    console.log(teacherId);
+    axios
+      .put("http://localhost:8080/api/v1/student", {
+        teacherId: teacherId,
+      })
+      .then((response) => {
+        setStudents(response.data);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -16,7 +16,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping
+    @PutMapping
     public List<Student> getStudents(@RequestBody Student student) {
         return studentService.getStudents(student);
     }

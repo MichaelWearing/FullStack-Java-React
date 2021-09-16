@@ -3,7 +3,6 @@ package com.example.server.login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,5 +28,17 @@ public class TeacherService {
         teacherRepository.save(teacher);
 
         System.out.println(teacher);
+    }
+
+    public Object authenticateTeacher(Teacher teacher) {
+        List<Teacher> allTeachers = teacherRepository.findAll();
+        for (Teacher t : allTeachers) {
+           if (t.getEmail().equals(teacher.getEmail()) &&
+                   t.getPassword().equals(teacher.getPassword())) {
+               return t;
+           }
+        }
+        // Find a way to better handle a failed login
+        throw new IllegalStateException("Incorrect Login Details");
     }
 }
