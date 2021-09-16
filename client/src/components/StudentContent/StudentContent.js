@@ -19,6 +19,7 @@ export default function StudentContent({
       <StudentCreation
         students={students}
         setStudents={setStudents}
+        teacherId={teacherId}
         setTeacherId={setTeacherId}
         setLoggedIn={setLoggedIn}
       />

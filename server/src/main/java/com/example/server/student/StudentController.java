@@ -21,6 +21,11 @@ public class StudentController {
         return studentService.getStudents(student);
     }
 
+    @GetMapping(path = "/all")
+    public List<Student> getAllStudents() {
+        return studentService.getAllStudents();
+    }
+
     @PostMapping
     public void registerNewStudent(@RequestBody Student student) {
         studentService.addNewStudent(student);

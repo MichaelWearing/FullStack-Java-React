@@ -32,6 +32,10 @@ public class StudentService {
         System.out.println("Trying to get students with the teacher with ID: " + student.getTeacherId());
         return studentsToReturn;
     }
+
+    public List<Student> getAllStudents() {
+        return studentRepository.findAll();
+    }
 //
 //    public List<Student> getStudents(Student student) {
 //        return studentRepository.findAll();
@@ -78,4 +82,6 @@ public class StudentService {
             student.setEmail(email);
         }
     }
+
+
 }

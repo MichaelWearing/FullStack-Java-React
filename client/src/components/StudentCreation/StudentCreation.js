@@ -14,6 +14,7 @@ import {
 export default function StudentCreation({
   students,
   setStudents,
+  teacherId,
   setTeacherId,
   setLoggedIn,
 }) {
@@ -29,11 +30,19 @@ export default function StudentCreation({
         name: name,
         email: email,
         dob: dob,
+        teacherId: teacherId,
       })
       .then((response) => {
-        axios.get("http://localhost:8080/api/v1/student").then((response) => {
+        /* axios.get("http://localhost:8080/api/v1/student").then((response) => {
           setStudents(response.data);
-        });
+        }); */
+        axios
+          .put("http://localhost:8080/api/v1/student", {
+            teacherId: teacherId,
+          })
+          .then((response) => {
+            setStudents(response.data);
+          });
       });
 
     console.log(name, email, dob);
