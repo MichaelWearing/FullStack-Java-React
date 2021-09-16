@@ -6,7 +6,10 @@ Front End - React
 Backend - Java
 Database - Postgres
 
-Next steps - Dockerize and run in Kubernetes
+----- Next steps -----
+
+--- General ---
+- Dockerize and run in Kubernetes
 
 --- Front end ---
 - Don't allow login when failed authentication
