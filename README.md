@@ -15,7 +15,7 @@ Database - Postgres
 --- Front end ---
 
 Current:
-- Update Student list after a delete
+- Confirm that passwords match
 
 ToDo:
 - Don't allow login when failed authentication
@@ -25,6 +25,7 @@ ToDo:
 - Email or password being inncorect should be communicated
 - Wipe user info after a user is created?
 - Maybe look into design
+- Confirm that it is a valid email
 
 --- Back end ---
 

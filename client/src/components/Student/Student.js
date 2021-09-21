@@ -46,9 +46,13 @@ export default function Student({
     axios
       .delete(`http://localhost:8080/api/v1/student/${id}`)
       .then((response) => {
-        axios.get("http://localhost:8080/api/v1/student").then((response) => {
-          setStudents(response.data);
-        });
+        axios
+          .put("http://localhost:8080/api/v1/student", {
+            teacherId: teacherId,
+          })
+          .then((response) => {
+            setStudents(response.data);
+          });
       });
   };
 
@@ -65,9 +69,6 @@ export default function Student({
         `http://localhost:8080/api/v1/student/${id}?name=${EditFormName}&email=${EditFormEmail}`
       )
       .then((response) => {
-        /* axios.get("http://localhost:8080/api/v1/student").then((response) => {
-          setStudents(response.data);
-        }); */
         axios
           .put("http://localhost:8080/api/v1/student", {
             teacherId: teacherId,
