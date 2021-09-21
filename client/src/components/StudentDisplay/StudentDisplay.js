@@ -42,6 +42,7 @@ export default function StudentDisplay({
           setStudents={setStudents}
           showEditForm={showEditForm}
           setShowEditForm={setShowEditForm}
+          teacherId={teacherId}
         />
       );
     });

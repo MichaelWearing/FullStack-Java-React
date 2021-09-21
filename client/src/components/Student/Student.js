@@ -21,7 +21,15 @@ import {
   EditFormSubmit,
 } from "./Student.styles";
 
-export default function Student({ id, name, email, dob, age, setStudents }) {
+export default function Student({
+  id,
+  name,
+  email,
+  dob,
+  age,
+  setStudents,
+  teacherId,
+}) {
   const [showEditForm, setShowEditForm] = useState(false);
 
   const [EditFormName, setEditFormName] = useState(name);
@@ -57,9 +65,16 @@ export default function Student({ id, name, email, dob, age, setStudents }) {
         `http://localhost:8080/api/v1/student/${id}?name=${EditFormName}&email=${EditFormEmail}`
       )
       .then((response) => {
-        axios.get("http://localhost:8080/api/v1/student").then((response) => {
+        /* axios.get("http://localhost:8080/api/v1/student").then((response) => {
           setStudents(response.data);
-        });
+        }); */
+        axios
+          .put("http://localhost:8080/api/v1/student", {
+            teacherId: teacherId,
+          })
+          .then((response) => {
+            setStudents(response.data);
+          });
       });
 
     console.log(
