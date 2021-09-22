@@ -71,3 +71,10 @@ export const SubmitButton = styled.button`
     background: lightslategray;
   }
 `;
+
+export const PasswordsDontMatch = styled.p`
+  color: red;
+  font-size: 20px;
+  text-decoration: underline;
+  margin-bottom: 15px;
+`;

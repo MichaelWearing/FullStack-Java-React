@@ -12,30 +12,40 @@ import {
   InputWrapper,
   Input,
   SubmitButton,
+  PasswordsDontMatch,
 } from "./CreateNewTeacher.styles";
 
 export default function CreateNewTeacher({ setCreatingNewTeacher }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordMatchCheck, setPasswordMatchCheck] = useState(false);
 
   const createTeacher = (e) => {
     e.preventDefault();
 
-    checkPasswordsMatch();
+    const passwordCheck = checkPasswordsMatch();
 
-    axios
-      .post("http://localhost:8080/api/v1/teacher", {
-        email: email,
-        password: password,
-      })
-      .then((response) => console.log(response));
+    if (passwordCheck) {
+      axios
+        .post("http://localhost:8080/api/v1/teacher", {
+          email: email,
+          password: password,
+        })
+        .then((response) => console.log(response));
 
-    console.log(email, password, confirmPassword);
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-    setCreatingNewTeacher(false);
+      console.log(email, password, confirmPassword);
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      setCreatingNewTeacher(false);
+      setPasswordMatchCheck(false);
+    } else {
+      console.log("They don't match");
+      setPassword("");
+      setConfirmPassword("");
+      setPasswordMatchCheck(true);
+    }
   };
 
   const backToLogin = () => {
@@ -43,7 +53,11 @@ export default function CreateNewTeacher({ setCreatingNewTeacher }) {
   };
 
   const checkPasswordsMatch = () => {
-    console.log("Add this functionality later");
+    if (password === confirmPassword) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   return (
@@ -68,6 +82,10 @@ export default function CreateNewTeacher({ setCreatingNewTeacher }) {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.currentTarget.value)}
         />
+
+        {passwordMatchCheck === false ? null : (
+          <PasswordsDontMatch>Passwords don't match!</PasswordsDontMatch>
+        )}
         <SubmitButton>Submit</SubmitButton>
       </InputWrapper>
     </Wrapper>
