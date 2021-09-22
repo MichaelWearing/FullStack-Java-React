@@ -72,7 +72,7 @@ export const SubmitButton = styled.button`
   }
 `;
 
-export const PasswordsDontMatch = styled.p`
+export const ErrorMessage = styled.p`
   color: red;
   font-size: 20px;
   text-decoration: underline;

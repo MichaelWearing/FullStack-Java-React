@@ -12,38 +12,51 @@ import {
   InputWrapper,
   Input,
   SubmitButton,
-  PasswordsDontMatch,
+  ErrorMessage,
 } from "./CreateNewTeacher.styles";
 
 export default function CreateNewTeacher({ setCreatingNewTeacher }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordMatchCheck, setPasswordMatchCheck] = useState(false);
+
+  const [passwordMatchCheck, setPasswordMatchCheck] = useState(true);
+  const [validEmailCheck, setValidEmailCheck] = useState(true);
 
   const createTeacher = (e) => {
     e.preventDefault();
 
-    const passwordCheck = checkPasswordsMatch();
+    const emailCheck = checkForValidEmail();
+    if (emailCheck) {
+      setValidEmailCheck(true);
+      const passwordCheck = checkPasswordsMatch();
 
-    if (passwordCheck) {
-      axios
-        .post("http://localhost:8080/api/v1/teacher", {
-          email: email,
-          password: password,
-        })
-        .then((response) => console.log(response));
+      if (passwordCheck) {
+        axios
+          .post("http://localhost:8080/api/v1/teacher", {
+            email: email,
+            password: password,
+          })
+          .then((response) => console.log(response));
 
-      console.log(email, password, confirmPassword);
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      setCreatingNewTeacher(false);
-      setPasswordMatchCheck(false);
+        console.log(email, password, confirmPassword);
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        setCreatingNewTeacher(false);
+        setPasswordMatchCheck(true);
+      } else {
+        console.log("They don't match");
+        setPassword("");
+        setConfirmPassword("");
+        setPasswordMatchCheck(false);
+      }
     } else {
-      console.log("They don't match");
+      console.log("Not a valid email");
       setPassword("");
       setConfirmPassword("");
+      setEmail("");
+      setValidEmailCheck(false);
       setPasswordMatchCheck(true);
     }
   };
@@ -60,6 +73,11 @@ export default function CreateNewTeacher({ setCreatingNewTeacher }) {
     }
   };
 
+  const checkForValidEmail = () => {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  };
+
   return (
     <Wrapper>
       <EditFormClose onClick={backToLogin}>
@@ -72,6 +90,9 @@ export default function CreateNewTeacher({ setCreatingNewTeacher }) {
           value={email}
           onChange={(e) => setEmail(e.currentTarget.value)}
         />
+        {validEmailCheck ? null : (
+          <ErrorMessage>Email is not valid</ErrorMessage>
+        )}
         <Input
           placeholder={"Password"}
           value={password}
@@ -83,8 +104,8 @@ export default function CreateNewTeacher({ setCreatingNewTeacher }) {
           onChange={(e) => setConfirmPassword(e.currentTarget.value)}
         />
 
-        {passwordMatchCheck === false ? null : (
-          <PasswordsDontMatch>Passwords don't match!</PasswordsDontMatch>
+        {passwordMatchCheck ? null : (
+          <ErrorMessage>Passwords don't match!</ErrorMessage>
         )}
         <SubmitButton>Submit</SubmitButton>
       </InputWrapper>
