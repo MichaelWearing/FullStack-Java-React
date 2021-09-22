@@ -29,4 +29,5 @@ Current:
 ToDo:
 - Handle failed Auth better
 - Look into how status codes work in Springboot
+- Look into how to handle errors
 - Host back-end
