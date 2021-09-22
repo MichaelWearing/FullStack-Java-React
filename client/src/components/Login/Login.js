@@ -18,7 +18,7 @@ import {
   ErrorMessage,
 } from "./Login.styles";
 
-export default function Login({ setLoggedIn, setTeacherId }) {
+export default function Login({ setLoggedIn, setTeacherId, setLoggedInUser }) {
   const [creatingNewTeacher, setCreatingNewTeacher] = useState(false);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -50,8 +50,8 @@ export default function Login({ setLoggedIn, setTeacherId }) {
 
           .then((response) => setTeacherId(response.data.id))
           .then((response) => setLoggedIn(true));
+        setLoggedInUser(loginEmail);
       } catch (e) {
-        console.log("HELLOOOOOOOO");
         setUserExists(false);
       }
     } else {

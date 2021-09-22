@@ -12,10 +12,11 @@ Database - Postgres
 
 - Dockerize and run in Kubernetes
 
+
 --- Front end ---
 
 Current:
-- Display user logged in
+- Host front-end
 
 ToDo:
 - Keep user logged in on reload using cookies
@@ -23,5 +24,9 @@ ToDo:
 
 --- Back end ---
 
+Current:
+
+ToDo:
 - Handle failed Auth better
 - Look into how status codes work in Springboot
+- Host back-end

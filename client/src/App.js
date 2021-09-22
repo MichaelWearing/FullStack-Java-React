@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [teacherId, setTeacherId] = useState("");
+  const [loggedInUser, setLoggedInUser] = useState("");
 
   return (
     <>
@@ -15,9 +16,14 @@ function App() {
           setLoggedIn={setLoggedIn}
           teacherId={teacherId}
           setTeacherId={setTeacherId}
+          loggedInUser={loggedInUser}
         />
       ) : (
-        <Login setLoggedIn={setLoggedIn} setTeacherId={setTeacherId} />
+        <Login
+          setLoggedIn={setLoggedIn}
+          setTeacherId={setTeacherId}
+          setLoggedInUser={setLoggedInUser}
+        />
       )}
     </>
   );

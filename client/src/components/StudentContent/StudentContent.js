@@ -11,6 +11,7 @@ export default function StudentContent({
   teacherId,
   setTeacherId,
   setLoggedIn,
+  loggedInUser,
 }) {
   const [students, setStudents] = useState([]);
 
@@ -22,6 +23,7 @@ export default function StudentContent({
         teacherId={teacherId}
         setTeacherId={setTeacherId}
         setLoggedIn={setLoggedIn}
+        loggedInUser={loggedInUser}
       />
       <StudentDisplay
         students={students}

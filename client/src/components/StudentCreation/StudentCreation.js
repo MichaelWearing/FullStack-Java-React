@@ -9,6 +9,7 @@ import {
   Input,
   SubmitButton,
   LogOutButton,
+  LoggedInUser,
 } from "./StudentCreation.styles";
 
 export default function StudentCreation({
@@ -17,6 +18,7 @@ export default function StudentCreation({
   teacherId,
   setTeacherId,
   setLoggedIn,
+  loggedInUser,
 }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -77,6 +79,8 @@ export default function StudentCreation({
           onChange={(e) => setDob(e.currentTarget.value)}
         />
         <SubmitButton type="submit">Submit</SubmitButton>
+        <LoggedInUser>Logged in as:</LoggedInUser>
+        <LoggedInUser>{loggedInUser}</LoggedInUser>
         <LogOutButton onClick={logOutTeacher}>Log Out</LogOutButton>
       </InputWrapper>
     </Wrapper>

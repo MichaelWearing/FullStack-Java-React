@@ -46,6 +46,8 @@ export const SubmitButton = styled.button`
   height: 4vh;
   width: 13vh;
 
+  margin-bottom: 36vh;
+
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
@@ -69,7 +71,7 @@ export const LogOutButton = styled.button`
   width: 13vh;
 
   margin-bottom: 2vh;
-  margin-top: 40vh;
+  margin-top: 2vh;
 
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -80,4 +82,13 @@ export const LogOutButton = styled.button`
     color: black;
     background: lightslategray;
   }
+`;
+
+export const LoggedInUser = styled.p`
+  color: lightsteelblue;
+
+  text-align: center;
+  font-size: 14px;
+
+  margin-top: 5px;
 `;
