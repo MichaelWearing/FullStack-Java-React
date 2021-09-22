@@ -15,14 +15,10 @@ Database - Postgres
 --- Front end ---
 
 Current:
-- Email or password being inncorect should be communicated
+- Display user logged in
 
 ToDo:
-- Don't allow login when failed authentication
-- Display user logged in
 - Keep user logged in on reload using cookies
-- Refresh should not log a user out (use cookies)
-- Wipe user info after a user is created?
 - Maybe look into design
 
 --- Back end ---

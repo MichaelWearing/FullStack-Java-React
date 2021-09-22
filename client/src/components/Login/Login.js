@@ -15,33 +15,58 @@ import {
   Input,
   SubmitButton,
   CreateNewUser,
+  ErrorMessage,
 } from "./Login.styles";
 
 export default function Login({ setLoggedIn, setTeacherId }) {
   const [creatingNewTeacher, setCreatingNewTeacher] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const [validEmailCheck, setValidEmailCheck] = useState(true);
+  const [userExists, setUserExists] = useState(true);
 
   const createNewTeacher = (e) => {
     e.preventDefault();
 
+    setValidEmailCheck(true);
+    setUserExists(true);
     setCreatingNewTeacher(true);
   };
 
   const authenticateUser = async (e) => {
     e.preventDefault();
 
-    await axios
-      .post("http://localhost:8080/api/v1/teacher/login", {
-        email: email,
-        password: password,
-      })
+    const emailCheck = checkForValidEmail();
+    if (emailCheck) {
+      setValidEmailCheck(true);
+      setUserExists(true);
+      try {
+        await axios
+          .post("http://localhost:8080/api/v1/teacher/login", {
+            email: loginEmail,
+            password: loginPassword,
+          })
 
-      .then((response) => setTeacherId(response.data.id))
-      .then((response) => setLoggedIn(true));
+          .then((response) => setTeacherId(response.data.id))
+          .then((response) => setLoggedIn(true));
+      } catch (e) {
+        console.log("HELLOOOOOOOO");
+        setUserExists(false);
+      }
+    } else {
+      setLoginEmail("");
+      setLoginPassword("");
+      setValidEmailCheck(false);
+    }
 
-      // If success log in and set as above,
-      // If fail, make user aware they failed on frontend
+    // If success log in and set as above,
+    // If fail, make user aware they failed on frontend
+  };
+
+  const checkForValidEmail = () => {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(loginEmail);
   };
 
   return (
@@ -54,14 +79,20 @@ export default function Login({ setLoggedIn, setTeacherId }) {
           <InputWrapper onSubmit={(e) => authenticateUser(e)}>
             <Input
               placeholder={"E-mail"}
-              value={email}
-              onChange={(e) => setEmail(e.currentTarget.value)}
+              value={loginEmail}
+              onChange={(e) => setLoginEmail(e.currentTarget.value)}
             />
+            {validEmailCheck ? null : (
+              <ErrorMessage>Email is not valid</ErrorMessage>
+            )}
             <Input
               placeholder={"Password"}
-              value={password}
-              onChange={(e) => setPassword(e.currentTarget.value)}
+              value={loginPassword}
+              onChange={(e) => setLoginPassword(e.currentTarget.value)}
             />
+            {userExists ? null : (
+              <ErrorMessage>No user exists with those credentials</ErrorMessage>
+            )}
             <SubmitButton>Submit</SubmitButton>
             <CreateNewUser onClick={(e) => createNewTeacher(e)}>
               Create new teacher account

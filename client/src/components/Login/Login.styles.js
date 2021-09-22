@@ -70,3 +70,10 @@ export const CreateNewUser = styled.a`
     text-decoration: underline;
   }
 `;
+
+export const ErrorMessage = styled.p`
+  color: red;
+  font-size: 20px;
+  text-decoration: underline;
+  margin-bottom: 15px;
+`;
