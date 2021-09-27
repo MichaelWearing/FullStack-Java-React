@@ -21,6 +21,7 @@ Current:
 ToDo:
 - Keep user logged in on reload using cookies
 - Maybe look into design
+- Create a dot env file 
 
 --- Back end ---
 
